@@ -2,4 +2,6 @@
     <string name="app_name">MTI Project - Olahra-GO</string>
     <string name="register">Already have an account? <b><u>Register here</u></b></string>
     <string name="toLogin"><u>Already have an account</u></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
