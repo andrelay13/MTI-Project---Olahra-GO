@@ -83,4 +83,29 @@ public class UserDB {
         cursor.close();
         return null;
     }
+
+    public User getUserDetail(int id){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        String get_user_detail = "SELECT * FROM " + DBHelper.TABLE_USERS +
+                " WHERE " +  DBHelper.FIELD_USER_ID + " = " + id;
+
+        Cursor cursor = db.rawQuery(get_user_detail,null);
+
+        if(cursor.moveToFirst()){
+            User user = new User();
+            user.setUserId(cursor.getInt(0));
+            user.setUserName(cursor.getString(1));
+            user.setUserPhone(cursor.getString(2));
+            user.setUserEmail(cursor.getString(3));
+            user.setUserPassword(cursor.getString(4));
+            cursor.close();
+            db.close();
+            return user;
+        }
+        cursor.close();
+        db.close();
+        return null;
+    }
+
 }
