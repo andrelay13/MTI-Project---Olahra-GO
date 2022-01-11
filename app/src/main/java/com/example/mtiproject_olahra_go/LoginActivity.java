@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
                     Integer id = userDb.getId(username);
 
                     if(userDb.checkUsers(username, password)){
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, NavigationBar.class);
                         intent.putExtra(SEND_LOGIN, id);
                         Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_LONG).show();
                         startActivity(intent);
