@@ -2,12 +2,15 @@ package com.example.mtiproject_olahra_go;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.mtiproject_olahra_go.fragment.BookingFragment;
 import com.example.mtiproject_olahra_go.fragment.HomeFragment;
+import com.example.mtiproject_olahra_go.fragment.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
@@ -30,11 +33,23 @@ public class NavigationBar extends AppCompatActivity {
                 int id = item.getItemId();
 
                 if(id == R.id.ic_home){
-                    Toast.makeText(NavigationBar.this, "Ini Home", Toast.LENGTH_LONG).show();
+                    HomeFragment homeFragment = HomeFragment.newInstance();
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+                    transaction.replace(R.id.fragments, homeFragment);
+                    transaction.commit();
                 }else if(id == R.id.ic_booking){
-                    Toast.makeText(NavigationBar.this, "Ini Booking", Toast.LENGTH_LONG).show();
+                    BookingFragment bookingFragment = BookingFragment.newInstance();
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+                    transaction.replace(R.id.fragments, bookingFragment);
+                    transaction.commit();
                 }else if(id == R.id.ic_profile){
-                    Toast.makeText(NavigationBar.this, "Ini Profile", Toast.LENGTH_LONG).show();
+                    ProfileFragment profileFragment = ProfileFragment.newInstance();
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+                    transaction.replace(R.id.fragments, profileFragment);
+                    transaction.commit();
                 }
 
                 return true;
