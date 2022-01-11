@@ -1,10 +1,12 @@
 package com.example.mtiproject_olahra_go.fragment;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -26,6 +28,7 @@ public class HomeFragment extends Fragment {
     SharedPreferences sp;
     UserDB userDB;
     CardView cvFutsal, cvBadminton, cvBasket;
+    String sportType;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -55,30 +58,41 @@ public class HomeFragment extends Fragment {
         int id =sp.getInt(LoginActivity.SEND_LOGIN, 0);
         userDB = new UserDB(getContext());
         User user = userDB.getUserDetail(id);
-        tvGreet.setText("Helloo " + user.getUserName());
+        tvGreet.setText("Hello " + user.getUserName());
 
         //Click Card
         cvFutsal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "futsal", Toast.LENGTH_LONG).show();
+                sportType = "Futsal";
+                setFragment();
             }
         });
 
         cvBasket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Basket", Toast.LENGTH_LONG).show();
+                sportType = "Basket";
+                setFragment();
             }
         });
 
         cvBadminton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Badminton", Toast.LENGTH_LONG).show();
+                sportType = "Badminton";
+                setFragment();
             }
         });
 
         return view;
+    }
+
+    public void setFragment(){
+        VenueListFragment venueListFragment = VenueListFragment.newInstance(sportType);
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+        transaction.replace(R.id.fragments, venueListFragment);
+        transaction.commit();
     }
 }

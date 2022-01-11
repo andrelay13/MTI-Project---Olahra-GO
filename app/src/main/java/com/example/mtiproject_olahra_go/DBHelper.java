@@ -40,6 +40,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String FIELD_SCHEDULE_DAY = "ScheduleDay";
     public static final String FIELD_SCHEDULE_TIME = "ScheduleTime";
 
+    //Schedule Detail Table
+    public static final String TABLE_SCHEDULES_DETAIL = "ScheduleDetail";
+
     public static final String CREATE_USER_TABLE =
             "CREATE TABLE IF NOT EXISTS " + TABLE_USERS +
                     " (" +
@@ -56,7 +59,8 @@ public class DBHelper extends SQLiteOpenHelper {
                     FIELD_VENUE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     FIELD_VENUE_NAME + " TEXT," +
                     FIELD_VENUE_PHONE + " TEXT," +
-                    FIELD_VENUE_ADDRESS + " TEXT"+
+                    FIELD_VENUE_ADDRESS + " TEXT,"+
+                    FIELD_VENUE_SPORT + " TEXT" +
                     " )";
 
     public static final String CREATE_BOOKING_TABLE =
@@ -72,9 +76,16 @@ public class DBHelper extends SQLiteOpenHelper {
             "CREATE TABLE IF NOT EXISTS " + TABLE_SCHEDULES +
                     " (" +
                     FIELD_SCHEDULE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    FIELD_VENUE_ID + " INTEGER REFERENCES " + TABLE_VENUES + "(" + TABLE_VENUES + ") ON UPDATE CASCADE ON DELETE CASCADE, " +
                     FIELD_SCHEDULE_DAY + " TEXT," +
                     FIELD_SCHEDULE_TIME + " TEXT" +
+                    " )";
+
+    public static final String CREATE_SCHEDULE_DETAIL_TABLE =
+            "CREATE TABLE IF NOT EXISTS " + TABLE_SCHEDULES_DETAIL +
+                    " (" +
+                    FIELD_VENUE_ID + " INTEGER REFERENCES " + TABLE_VENUES + "(" + FIELD_VENUE_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, " +
+                    FIELD_SCHEDULE_ID + " INTEGER REFERENCES " + TABLE_SCHEDULES + "(" + FIELD_SCHEDULE_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, " +
+                    "PRIMARY KEY(" + FIELD_VENUE_ID + ", " + FIELD_SCHEDULE_ID + ")" +
                     " )";
 
 
@@ -82,6 +93,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String DROP_VENUE = "DROP TABLE IF EXISTS " + TABLE_VENUES;
     public static final String DROP_BOOKING= "DROP TABLE IF EXISTS " + TABLE_BOOKINGS;
     public static final String DROP_SCHEDULE= "DROP TABLE IF EXISTS " + TABLE_SCHEDULES;
+    public static final String DROP_SCHEDULE_DETAIL= "DROP TABLE IF EXISTS " + TABLE_SCHEDULES_DETAIL;
 
     public DBHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -93,6 +105,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_VENUE_TABLE);
         db.execSQL(CREATE_BOOKING_TABLE);
         db.execSQL(CREATE_SCHEDULE_TABLE);
+        db.execSQL(CREATE_SCHEDULE_DETAIL_TABLE);
     }
 
     @Override
@@ -101,6 +114,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(DROP_VENUE);
         db.execSQL(DROP_BOOKING);
         db.execSQL(DROP_SCHEDULE);
+        db.execSQL(DROP_SCHEDULE_DETAIL);
         onCreate(db);
     }
 }

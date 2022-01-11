@@ -20,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView tvRegister;
     UserDB userDb;
     Context context;
+    VenueDB venueDB;
     public static final String SEND_LOGIN = "com.example.application.OlahraGO.SEND_LOGIN";
 
     @Override
@@ -33,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
         tvRegister = findViewById(R.id.tvRegister);
         userDb = new UserDB(this);
 
+        //INSERT VENUE DATA MANUALLY
+//        insertVenue();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     public Boolean checkUsername(){
@@ -91,6 +95,53 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sp.edit();
         editor.putInt(key, id);
         editor.commit();
+    }
+
+    public void insertVenue(){
+        venueDB = new VenueDB(this);
+
+        Venue venue1 = new Venue();
+        venue1.setVenueName("Champion Futsal");
+        venue1.setVenuePhone("02164715383");
+        venue1.setVenueAddress("Jalan Kemanggisan");
+        venue1.setVenueSport("Futsal");
+        venueDB.insertVenue(venue1);
+
+        Venue venue2 = new Venue();
+        venue2.setVenueName("Orion Basket");
+        venue2.setVenuePhone("02164715384");
+        venue2.setVenueAddress("Jalan Pluit");
+        venue2.setVenueSport("Basket");
+        venueDB.insertVenue(venue2);
+
+        Venue venue3 = new Venue();
+        venue3.setVenueName("Elang Badminton");
+        venue3.setVenuePhone("02164715385");
+        venue3.setVenueAddress("Jalan Pademangan");
+        venue3.setVenueSport("Badminton");
+        venueDB.insertVenue(venue3);
+
+        Venue venue4 = new Venue();
+        venue4.setVenueName("Maestro Futsal");
+        venue4.setVenuePhone("02164715386");
+        venue4.setVenueAddress("Jalan Kemayoran");
+        venue4.setVenueSport("Futsal");
+        venueDB.insertVenue(venue4);
+
+        Venue venue5 = new Venue();
+        venue5.setVenueName("Darcici Basket");
+        venue5.setVenuePhone("02164715387");
+        venue5.setVenueAddress("Jalan Sunter");
+        venue5.setVenueSport("Basket");
+        venueDB.insertVenue(venue5);
+
+        Venue venue6 = new Venue();
+        venue6.setVenueName("GOR Badminton");
+        venue6.setVenuePhone("02164715388");
+        venue6.setVenueAddress("Jalan Ancol");
+        venue6.setVenueSport("Badminton");
+        venueDB.insertVenue(venue6);
+
     }
 
 }
