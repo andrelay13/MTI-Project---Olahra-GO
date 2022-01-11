@@ -15,6 +15,12 @@
             android:layout_centerInParent="true"
             android:text="Ini Home" />
 
+        <Button
+            android:id="@+id/buttonTrigger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test"/>
+
     </RelativeLayout>
 
 </FrameLayout>
