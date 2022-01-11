@@ -12,7 +12,15 @@
         android:id="@+id/wrapper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottomNavBar"/>
+        android:layout_above="@id/bottomNavBar">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragments"
+            android:name="com.example.mtiproject_olahra_go.fragment.HomeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavBar"
@@ -22,6 +30,6 @@
         app:itemBackground="@color/design_default_color_primary"
         app:itemIconTint="#fff"
         app:itemTextColor="#fff"
-        app:menu="@menu/nav_menu"/>
+        app:menu="@menu/nav_menu" />
 
 </RelativeLayout>
