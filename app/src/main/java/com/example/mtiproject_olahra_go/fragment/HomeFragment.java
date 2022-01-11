@@ -1,24 +1,30 @@
 package com.example.mtiproject_olahra_go.fragment;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
+import com.example.mtiproject_olahra_go.DBHelper;
+import com.example.mtiproject_olahra_go.LoginActivity;
 import com.example.mtiproject_olahra_go.R;
+import com.example.mtiproject_olahra_go.User;
+import com.example.mtiproject_olahra_go.UserDB;
 
 public class HomeFragment extends Fragment {
-    
-    Button buttonTrigger;
-    
+
+
+    TextView tvGreet;
+    SharedPreferences sp;
+    UserDB userDB;
     public HomeFragment() {
-        
+        // Required empty public constructor
     }
 
     public static HomeFragment newInstance() {
@@ -34,22 +40,16 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        buttonTrigger = view.findViewById(R.id.buttonTrigger);
-        
-        buttonTrigger.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                BookingFragment bookingFragment = BookingFragment.newInstance();
-                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-                transaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
-                transaction.replace(R.id.fragments, bookingFragment);
-                transaction.commit();
-            }
-        });
-                
+        tvGreet = view.findViewById(R.id.tvGreet);
+        sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+        int id =sp.getInt(LoginActivity.SEND_LOGIN, 0);
+        userDB = new UserDB(getContext());
+
+        User user = userDB.getUserDetail(id);
+        tvGreet.setText("Hello " + user.getUserName());
+
         return view;
     }
 }

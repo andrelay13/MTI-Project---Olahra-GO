@@ -2,8 +2,11 @@ package com.example.mtiproject_olahra_go;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     TextView tvRegister;
     UserDB userDb;
-
+    Context context;
     public static final String SEND_LOGIN = "com.example.application.OlahraGO.SEND_LOGIN";
 
     @Override
@@ -42,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     if(userDb.checkUsers(username, password)){
                         Intent intent = new Intent(LoginActivity.this, NavigationBar.class);
-                        intent.putExtra(SEND_LOGIN, id);
+                        SaveId(SEND_LOGIN, id);
                         Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_LONG).show();
                         startActivity(intent);
 
@@ -82,4 +85,12 @@ public class LoginActivity extends AppCompatActivity {
 
         return true;
     }
+
+    public void SaveId(String key, int id){
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putInt(key, id);
+        editor.commit();
+    }
+
 }
