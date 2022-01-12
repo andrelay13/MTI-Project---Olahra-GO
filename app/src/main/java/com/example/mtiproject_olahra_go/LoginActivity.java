@@ -105,6 +105,7 @@ public class LoginActivity extends AppCompatActivity {
         venue1.setVenuePhone("02164715383");
         venue1.setVenueAddress("Jalan Kemanggisan");
         venue1.setVenueSport("Futsal");
+        venue1.setVenueCourt(1);
         venueDB.insertVenue(venue1);
 
         Venue venue2 = new Venue();
@@ -112,6 +113,7 @@ public class LoginActivity extends AppCompatActivity {
         venue2.setVenuePhone("02164715384");
         venue2.setVenueAddress("Jalan Pluit");
         venue2.setVenueSport("Basket");
+        venue2.setVenueCourt(1);
         venueDB.insertVenue(venue2);
 
         Venue venue3 = new Venue();
@@ -119,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
         venue3.setVenuePhone("02164715385");
         venue3.setVenueAddress("Jalan Pademangan");
         venue3.setVenueSport("Badminton");
+        venue3.setVenueCourt(4);
         venueDB.insertVenue(venue3);
 
         Venue venue4 = new Venue();
@@ -126,6 +129,7 @@ public class LoginActivity extends AppCompatActivity {
         venue4.setVenuePhone("02164715386");
         venue4.setVenueAddress("Jalan Kemayoran");
         venue4.setVenueSport("Futsal");
+        venue4.setVenueCourt(6);
         venueDB.insertVenue(venue4);
 
         Venue venue5 = new Venue();
@@ -133,6 +137,7 @@ public class LoginActivity extends AppCompatActivity {
         venue5.setVenuePhone("02164715387");
         venue5.setVenueAddress("Jalan Sunter");
         venue5.setVenueSport("Basket");
+        venue5.setVenueCourt(2);
         venueDB.insertVenue(venue5);
 
         Venue venue6 = new Venue();
@@ -140,6 +145,7 @@ public class LoginActivity extends AppCompatActivity {
         venue6.setVenuePhone("02164715388");
         venue6.setVenueAddress("Jalan Ancol");
         venue6.setVenueSport("Badminton");
+        venue6.setVenueCourt(4);
         venueDB.insertVenue(venue6);
 
     }

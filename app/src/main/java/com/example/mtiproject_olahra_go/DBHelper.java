@@ -27,6 +27,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String FIELD_VENUE_PHONE = "VenuePhone";
     public static final String FIELD_VENUE_ADDRESS = "VenueAddress";
     public static final String FIELD_VENUE_SPORT = "VenueSport";
+    public static final String FIELD_VENUE_COURTS = "VenueCourts";
 
 
     //Booking Table
@@ -60,7 +61,8 @@ public class DBHelper extends SQLiteOpenHelper {
                     FIELD_VENUE_NAME + " TEXT," +
                     FIELD_VENUE_PHONE + " TEXT," +
                     FIELD_VENUE_ADDRESS + " TEXT,"+
-                    FIELD_VENUE_SPORT + " TEXT" +
+                    FIELD_VENUE_SPORT + " TEXT," +
+                    FIELD_VENUE_COURTS + " INTEGER" +
                     " )";
 
     public static final String CREATE_BOOKING_TABLE =

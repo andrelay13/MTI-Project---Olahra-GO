@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.mtiproject_olahra_go.DBHelper;
 import com.example.mtiproject_olahra_go.LoginActivity;
+import com.example.mtiproject_olahra_go.NavigationBar;
 import com.example.mtiproject_olahra_go.R;
 import com.example.mtiproject_olahra_go.User;
 import com.example.mtiproject_olahra_go.UserDB;
@@ -92,7 +93,7 @@ public class HomeFragment extends Fragment {
         VenueListFragment venueListFragment = VenueListFragment.newInstance(sportType);
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
         transaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
-        transaction.replace(R.id.fragments, venueListFragment);
+        transaction.replace(R.id.fragments, venueListFragment).addToBackStack(NavigationBar.FRAGMENT_TAG);
         transaction.commit();
     }
 }

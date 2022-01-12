@@ -8,6 +8,16 @@ public class Venue {
     private String venueAddress;
     private String venueSport;
 
+    public int getVenueCourt() {
+        return venueCourt;
+    }
+
+    public void setVenueCourt(int venueCourt) {
+        this.venueCourt = venueCourt;
+    }
+
+    private int venueCourt;
+
     public int getVenueId() {
         return venueId;
     }
@@ -48,12 +58,13 @@ public class Venue {
         this.venueSport = venueSport;
     }
 
-    public Venue(int venueId, String venueName, String venuePhone, String venueAddress, String venueSport) {
+    public Venue(int venueId, String venueName, String venuePhone, String venueAddress, String venueSport, int venueCourt) {
         this.venueId = venueId;
         this.venueName = venueName;
         this.venuePhone = venuePhone;
         this.venueAddress = venueAddress;
         this.venueSport = venueSport;
+        this.venueCourt = venueCourt;
     }
 
     public Venue(){
