@@ -2,7 +2,9 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/cvVenue"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/border"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,7 +19,6 @@
             android:layout_centerVertical="true"
             android:src="@drawable/dummysmall"
             />
-
         <TextView
             android:id="@+id/tvVenueName"
             android:text="Venue Name"
@@ -37,7 +38,17 @@
             android:layout_toRightOf="@+id/ivCard"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
+            />
+
+        <TextView
+            android:id="@+id/tvVenuePrice"
+            android:text="harga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvVenueAddress"
+            android:layout_toRightOf="@id/ivCard"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
             />
 
     </RelativeLayout>

@@ -28,18 +28,20 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String FIELD_VENUE_ADDRESS = "VenueAddress";
     public static final String FIELD_VENUE_SPORT = "VenueSport";
     public static final String FIELD_VENUE_COURTS = "VenueCourts";
-
+    public static final String FIELD_VENUE_PRICE =  "VenuePrice";
 
     //Booking Table
     public static final String TABLE_BOOKINGS = "Booking";
     public static final String FIELD_BOOKING_ID =  "BookingId";
     public static final String FIELD_BOOKING_DATE =  "BookingDate";
+    public static final String FIELD_BOOKING_COURT = "BookingCourt";
 
     //Schedule Table
     public static final String TABLE_SCHEDULES = "Schedule";
     public static final String FIELD_SCHEDULE_ID =   "ScheduleId";
     public static final String FIELD_SCHEDULE_DAY = "ScheduleDay";
-    public static final String FIELD_SCHEDULE_TIME = "ScheduleTime";
+    public static final String FIELD_SCHEDULE_START_TIME = "ScheduleStartTime";
+    public static final String FIELD_SCHEDULE_CLOSE_TIME = "ScheduleCloseTime";
 
     //Schedule Detail Table
     public static final String TABLE_SCHEDULES_DETAIL = "ScheduleDetail";
@@ -62,7 +64,8 @@ public class DBHelper extends SQLiteOpenHelper {
                     FIELD_VENUE_PHONE + " TEXT," +
                     FIELD_VENUE_ADDRESS + " TEXT,"+
                     FIELD_VENUE_SPORT + " TEXT," +
-                    FIELD_VENUE_COURTS + " INTEGER" +
+                    FIELD_VENUE_COURTS + " INTEGER, " +
+                    FIELD_VENUE_PRICE + " INTEGER" +
                     " )";
 
     public static final String CREATE_BOOKING_TABLE =
@@ -71,7 +74,8 @@ public class DBHelper extends SQLiteOpenHelper {
                     FIELD_BOOKING_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     FIELD_USER_ID + " INTEGER REFERENCES " + TABLE_USERS + "(" + FIELD_USER_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, " +
                     FIELD_VENUE_ID + " INTEGER REFERENCES " + TABLE_VENUES + "(" + FIELD_VENUE_ID + ") ON UPDATE CASCADE ON DELETE CASCADE, " +
-                    FIELD_BOOKING_DATE + " TEXT" +
+                    FIELD_BOOKING_DATE + " TEXT," +
+                    FIELD_BOOKING_COURT + " INTEGER" +
                     " )";
 
     public static final String CREATE_SCHEDULE_TABLE =
@@ -79,7 +83,8 @@ public class DBHelper extends SQLiteOpenHelper {
                     " (" +
                     FIELD_SCHEDULE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     FIELD_SCHEDULE_DAY + " TEXT," +
-                    FIELD_SCHEDULE_TIME + " TEXT" +
+                    FIELD_SCHEDULE_START_TIME + " INTEGER," +
+                    FIELD_SCHEDULE_CLOSE_TIME + " INTEGER" +
                     " )";
 
     public static final String CREATE_SCHEDULE_DETAIL_TABLE =

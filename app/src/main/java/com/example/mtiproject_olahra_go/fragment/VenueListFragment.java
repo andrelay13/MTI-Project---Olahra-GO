@@ -3,6 +3,7 @@ package com.example.mtiproject_olahra_go.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.mtiproject_olahra_go.DBHelper;
+import com.example.mtiproject_olahra_go.PaymentActivity;
 import com.example.mtiproject_olahra_go.R;
 import com.example.mtiproject_olahra_go.Venue;
 import com.example.mtiproject_olahra_go.VenueAdapter;
@@ -67,6 +69,16 @@ public class VenueListFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(PaymentActivity.flag){
+            PaymentActivity.flag = false;
+            getActivity().getSupportFragmentManager().beginTransaction().remove((Fragment) this).commit();
+            setFragment();
+        }
+    }
+
     public void getRvData(View view){
         String sport = getArguments().getString(KEY_SPORT);
         rvVenues = view.findViewById(R.id.rvVenues);
@@ -77,5 +89,13 @@ public class VenueListFragment extends Fragment {
 
         rvVenues.setAdapter(venueAdapter);
         rvVenues.setLayoutManager(new GridLayoutManager(getContext(), 1));
+    }
+
+    public void setFragment(){
+        BookingFragment bookingFragment = BookingFragment.newInstance();
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+        transaction.replace(R.id.fragments, bookingFragment);
+        transaction.commit();
     }
 }

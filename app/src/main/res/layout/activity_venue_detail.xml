@@ -11,7 +11,7 @@
         android:id="@+id/ivVenue"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/dummy"
         />
 
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ivVenue"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         />
 
     <TextView
@@ -43,19 +43,28 @@
         />
 
     <TextView
+        android:id="@+id/tvVenuePrice"
+        android:text="Harga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvVenueAddress"
+        android:layout_marginTop="10dp"
+        />
+    <TextView
         android:id="@+id/tvSchedule"
         android:text="Jam Operasional"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvVenueAddress"
+        android:layout_below="@id/tvVenuePrice"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         />
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSchedule"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="220dp"
         android:layout_below="@id/tvSchedule"
         android:layout_marginTop="10dp"
         />
@@ -65,8 +74,8 @@
         android:text="Pilih Jadwal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/rvSchedule"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         />
 </RelativeLayout>

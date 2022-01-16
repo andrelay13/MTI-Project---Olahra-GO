@@ -7,6 +7,7 @@ public class Venue {
     private String venuePhone;
     private String venueAddress;
     private String venueSport;
+    private int venuePrice;
 
     public int getVenueCourt() {
         return venueCourt;
@@ -58,13 +59,22 @@ public class Venue {
         this.venueSport = venueSport;
     }
 
-    public Venue(int venueId, String venueName, String venuePhone, String venueAddress, String venueSport, int venueCourt) {
+    public int getVenuePrice() {
+        return venuePrice;
+    }
+
+    public void setVenuePrice(int venuePrice) {
+        this.venuePrice = venuePrice;
+    }
+
+    public Venue(int venueId, String venueName, String venuePhone, String venueAddress, String venueSport, int venueCourt, int venuePrice) {
         this.venueId = venueId;
         this.venueName = venueName;
         this.venuePhone = venuePhone;
         this.venueAddress = venueAddress;
         this.venueSport = venueSport;
         this.venueCourt = venueCourt;
+        this.venuePrice = venuePrice;
     }
 
     public Venue(){

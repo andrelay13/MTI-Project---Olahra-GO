@@ -22,7 +22,7 @@ public class VenueDB {
         cv.put(DBHelper.FIELD_VENUE_ADDRESS, venue.getVenueAddress());
         cv.put(DBHelper.FIELD_VENUE_SPORT, venue.getVenueSport());
         cv.put(DBHelper.FIELD_VENUE_COURTS, venue.getVenueCourt());
-
+        cv.put(DBHelper.FIELD_VENUE_PRICE, venue.getVenuePrice());
         db.insert(DBHelper.TABLE_VENUES, null, cv);
         db.close();
     }
@@ -42,7 +42,8 @@ public class VenueDB {
             String venueAddress = cursor.getString(cursor.getColumnIndex(DBHelper.FIELD_VENUE_ADDRESS));
             String venueSport = cursor.getString(cursor.getColumnIndex(DBHelper.FIELD_VENUE_SPORT));
             int venueCourt = cursor.getInt(cursor.getColumnIndex(DBHelper.FIELD_VENUE_COURTS));
-            Venue venue = new Venue(venueId, venueName, venuePhone, venueAddress, venueSport, venueCourt);
+            int venuePrice = cursor.getInt(cursor.getColumnIndex(DBHelper.FIELD_VENUE_PRICE));
+            Venue venue = new Venue(venueId, venueName, venuePhone, venueAddress, venueSport, venueCourt, venuePrice);
             vecVenues.add(venue);
         }
 
@@ -66,8 +67,8 @@ public class VenueDB {
             String venueAddress = cursor.getString(3);
             String venueSport = cursor.getString(4);
             int venueCourt = cursor.getInt(5);
-
-            Venue venue = new Venue(venueId, venueName, venuePhone, venueAddress, venueSport, venueCourt);
+            int venuePrice = cursor.getInt(6);
+            Venue venue = new Venue(venueId, venueName, venuePhone, venueAddress, venueSport, venueCourt, venuePrice);
             cursor.close();
             db.close();
             dbHelper.close();

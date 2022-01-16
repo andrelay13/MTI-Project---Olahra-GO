@@ -1,5 +1,6 @@
 package com.example.mtiproject_olahra_go;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -32,9 +33,10 @@ public class VenueAdapter extends RecyclerView.Adapter<VenueAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VenueAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull VenueAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.tvVenueName.setText("" + vecVenues.get(position).getVenueName());
         holder.tvVenueAddress.setText("" + vecVenues.get(position).getVenueAddress());
+        holder.tvVenuePrice.setText("Rp. " + vecVenues.get(position).getVenuePrice() + "/Jam");
 
         holder.cvVenue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,13 +56,14 @@ public class VenueAdapter extends RecyclerView.Adapter<VenueAdapter.ViewHolder> 
     class ViewHolder extends RecyclerView.ViewHolder{
 
         CardView cvVenue;
-        TextView tvVenueName, tvVenueAddress;
+        TextView tvVenueName, tvVenueAddress, tvVenuePrice;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             cvVenue = itemView.findViewById(R.id.cvVenue);
             tvVenueName = itemView.findViewById(R.id.tvVenueName);
             tvVenueAddress = itemView.findViewById(R.id.tvVenueAddress);
+            tvVenuePrice = itemView.findViewById(R.id.tvVenuePrice);
         }
     }
 }

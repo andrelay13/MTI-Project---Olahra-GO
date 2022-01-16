@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookingActivity"
+    android:layout_margin="20dp"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BOOKING PAGE"
+        android:layout_centerHorizontal="true"
+        />
+
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_below="@id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/numberPicker"
+        android:hint="Choose court"
+        android:background="@drawable/border"
+        android:inputType="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/datePicker"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="20dp"
+        android:padding="10dp"
+        />
+
+    <TextView
+        android:id="@+id/txtStart"
+        android:hint="Start time"
+        android:background="@drawable/border"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_below="@+id/numberPicker"
+        android:padding="10dp"
+        />
+
+    <TextView
+        android:id="@+id/txtStop"
+        android:hint="Stop time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_below="@id/numberPicker"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/border"
+        android:padding="10dp"
+        />
+
+    <TextView
+        android:id="@+id/tvError"
+        android:textColor="@color/red"
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtStop"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <Button
+        android:id="@+id/btnCheck"
+        android:text="Check Availibility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvError"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+    </RelativeLayout>
+</ScrollView>
