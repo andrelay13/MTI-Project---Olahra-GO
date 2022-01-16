@@ -1,18 +1,12 @@
 package com.example.mtiproject_olahra_go;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.mtiproject_olahra_go.fragment.BookingFragment;
-import com.example.mtiproject_olahra_go.fragment.VenueListFragment;
-
-import org.w3c.dom.Text;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class PaymentActivity extends AppCompatActivity {
 
@@ -51,7 +45,8 @@ public class PaymentActivity extends AppCompatActivity {
         btnPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO:: INSERT BOOKING TO DATABASE
+                BookingDB bookingDB = new BookingDB(getApplicationContext());
+                bookingDB.insertBooking(booking);
                 finish();
                 flag = true;
             }

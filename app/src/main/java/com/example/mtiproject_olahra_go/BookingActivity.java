@@ -1,23 +1,19 @@
 package com.example.mtiproject_olahra_go;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Vector;
 
 public class BookingActivity extends AppCompatActivity {
@@ -194,7 +190,6 @@ public class BookingActivity extends AppCompatActivity {
                     year = datePicker.getYear();
                     strDate = "" + date + "-" + month + "-" + year;
                     dateTime = strDate + ", " + strStart + "-" + strStop;
-
                     BookingDB db = new BookingDB(getApplicationContext());
                     Vector<Booking> vecBooking = db.getBookings();
                     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -204,7 +199,7 @@ public class BookingActivity extends AppCompatActivity {
                         toPaymentpage();
                     }else {
                         for (Booking booking : vecBooking) {
-                            if (booking.getDate().equals(dateTime) && booking.getSelectedCourse() == court && booking.getUserId() == userId && booking.getVenueId() == venueId) {
+                            if ((booking.getDate().equals(dateTime) || booking.getDate().contains(strStart) || booking.getDate().contains(strStop)) && booking.getSelectedCourse() == court && booking.getUserId() == userId && booking.getVenueId() == venueId) {
                                 tvError.setText("Sudah dibooking");
                             } else {
                                 toPaymentpage();
