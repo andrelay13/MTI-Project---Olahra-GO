@@ -18,7 +18,7 @@ import com.google.android.material.navigation.NavigationView;
 public class NavigationBar extends AppCompatActivity {
 
     BottomNavigationView navbar;
-
+    public static final String FRAGMENT_TAG = "com.example.mtiproject.FRAGMENT_TAG";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,4 +57,5 @@ public class NavigationBar extends AppCompatActivity {
         });
 
     }
+
 }

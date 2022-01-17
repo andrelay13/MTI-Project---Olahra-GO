@@ -10,13 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MTIProjectOlahraGO">
         <activity
-            android:name=".RegisterVendor"
-            android:exported="false"
-            android:parentActivityName=".NavigationBar"/>
-
+            android:name=".PaymentActivity"
+            android:exported="true" />
+        <activity
+            android:name=".BookingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".VenueDetailActivity"
+            android:exported="true" />
         <activity
             android:name=".NavigationBar"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">

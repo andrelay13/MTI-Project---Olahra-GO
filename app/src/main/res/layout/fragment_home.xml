@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.HomeFragment">
 
     <RelativeLayout
@@ -13,8 +14,77 @@
             android:id="@+id/tvGreet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Ini Home" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="WELCOME" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardSoccer"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@id/tvGreet"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Futsal" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardBadminton"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@id/tvGreet"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Badminton" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardBasket"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@id/cardSoccer"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Basket" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/buttonTrigger"
