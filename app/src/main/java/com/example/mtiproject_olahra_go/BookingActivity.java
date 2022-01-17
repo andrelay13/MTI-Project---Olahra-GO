@@ -12,6 +12,8 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Calendar;
 import java.util.Vector;
@@ -26,6 +28,11 @@ public class BookingActivity extends AppCompatActivity {
     private int date, month, year, currDate, currMonth, currYear, venueId, userId, court;
     public static int start, stop;
     private String strDate, strStart, strStop, dateTime;
+    Vector<Booking> bookings = new Vector<>();
+    RecyclerView rvBooking;
+
+    SharedPreferences sp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -46,6 +53,18 @@ public class BookingActivity extends AppCompatActivity {
         venueId = intent.getIntExtra(VenueDetailActivity.SEND_VENUEID, 0);
         VenueDB venueDB = new VenueDB(this);
         Venue venue = venueDB.getVenueDetail(venueId);
+
+        sp = PreferenceManager.getDefaultSharedPreferences(this);
+        int id = sp.getInt(LoginActivity.SEND_LOGIN, 0);
+
+        BookingDB bookingDB = new BookingDB(this);
+        bookings = bookingDB.getUserBookings(id);
+
+        BookingAdapter adapter = new BookingAdapter();
+        adapter.setBookings(bookings);
+
+        rvBooking.setAdapter(adapter);
+        rvBooking.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL, false));
 
         //get Jadwal
         JadwalDB jadwalDB = new JadwalDB(this);

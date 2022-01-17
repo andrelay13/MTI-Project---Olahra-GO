@@ -10,21 +10,27 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBooking"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="BOOKING PAGE"
         android:layout_centerHorizontal="true"
+        android:layout_below="@id/rvBooking"
         />
 
-    <DatePicker
-        android:id="@+id/datePicker"
-        android:layout_below="@id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        />
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvTitle"
+            android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/numberPicker"

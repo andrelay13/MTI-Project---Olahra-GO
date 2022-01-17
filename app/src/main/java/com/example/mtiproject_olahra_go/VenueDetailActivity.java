@@ -27,11 +27,8 @@ public class VenueDetailActivity extends AppCompatActivity {
     TextView tvVenueName, tvVenueCourt, tvVenueAddress, tvSchedule, tvPrice;
     ImageView ivVenue;
     Button btnBook;
-    RecyclerView rvJadwal, rvBooking;
+    RecyclerView rvJadwal;
     Vector<Jadwal> vecJadwal = new Vector<>();
-    Vector<Booking> bookings = new Vector<>();
-
-    SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,17 +43,11 @@ public class VenueDetailActivity extends AppCompatActivity {
         btnBook = findViewById(R.id.btnBook);
         rvJadwal = findViewById(R.id.rvSchedule);
 
-        sp = PreferenceManager.getDefaultSharedPreferences(this);
-        int id = sp.getInt(LoginActivity.SEND_LOGIN, 0);
-
         //get VenueId
         Intent intent = getIntent();
         venueId = intent.getIntExtra(VenueAdapter.SEND_VENUE, 0);
         VenueDB venueDB = new VenueDB(this);
         Venue venue = venueDB.getVenueDetail(venueId);
-
-        BookingDB bookingDB = new BookingDB(this);
-        bookings = bookingDB.getUserBookings(id);
 
         tvVenueName.setText(venue.getVenueName());
         tvVenueCourt.setText("Jumlah Lapangan: " + venue.getVenueCourt());
