@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Vector;
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText txtPassword, txtUsername;
@@ -35,7 +37,11 @@ public class LoginActivity extends AppCompatActivity {
         userDb = new UserDB(this);
 
         //INSERT DATA MANUALLY
-//        insertData();
+        JadwalDB jadwalDB = new JadwalDB(this);
+        Vector<Jadwal> vector = jadwalDB.getJadwal();
+        if(vector.isEmpty()){
+            insertData();
+        }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
