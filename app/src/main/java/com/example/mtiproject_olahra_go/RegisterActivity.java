@@ -1,7 +1,5 @@
 package com.example.mtiproject_olahra_go;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -33,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(checkusername() && checkPhone() && checkPhone() && checkconfirmationpass()){
+                if(checkusername() && checkPhone() && checkPhone() && checkconfirmationpass() && checkEmail()){
                     User user  = new User();
                     user.setUserName(txtUsername.getText().toString());
                     user.setUserPhone(txtPhone.getText().toString());
@@ -71,6 +71,15 @@ public class RegisterActivity extends AppCompatActivity {
             txtUsername.setError("Username must be between 6 and 12 characters");
             return false;
         }
+    }
+
+    private Boolean checkEmail(){
+        String email = txtEmail.getText().toString();
+        if(email.isEmpty()){
+            txtEmail.setError("Email cannot be empty");
+            return false;
+        }
+        return true;
     }
 
     private Boolean checkpassword(){
