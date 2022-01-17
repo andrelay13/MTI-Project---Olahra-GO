@@ -33,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(checkusername() && checkPhone() && checkPhone() && checkconfirmationpass() && checkEmail()){
+                if(checkusername() && checkPhone() && checkPhone() && checkPassword() && checkconfirmationpass() && checkEmail()){
                     User user  = new User();
                     user.setUserName(txtUsername.getText().toString());
                     user.setUserPhone(txtPhone.getText().toString());
@@ -181,5 +181,15 @@ public class RegisterActivity extends AppCompatActivity {
             return false;
         }
         return false;
+    }
+
+    private boolean checkPassword(){
+        String password = txtPassword.getText().toString();
+        if(password.isEmpty()){
+            txtPassword.setError("Password cannot be empty");
+            return false;
+        }
+
+        return true;
     }
 }
