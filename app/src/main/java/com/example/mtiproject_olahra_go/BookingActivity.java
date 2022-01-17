@@ -201,6 +201,7 @@ public class BookingActivity extends AppCompatActivity {
         btnCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                boolean flag = true;
                 if(court == 0)  tvError.setText("Pilih lapangan!");
                 else if(start == 0)  tvError.setText("Pilih waktu mulai!");
                 else if(stop == 0)   tvError.setText("Pilih waktu selesai!");
@@ -223,10 +224,14 @@ public class BookingActivity extends AppCompatActivity {
                         for (Booking booking : vecBooking) {
                             if ((booking.getDate().equals(dateTime) || booking.getDate().contains(strStart) || booking.getDate().contains(strStop)) && booking.getSelectedCourse() == court && booking.getUserId() == userId && booking.getVenueId() == venueId) {
                                 tvError.setText("Sudah dibooking");
+                                flag = false;
                                 break;
-                            } else {
-                                toPaymentpage();
+                            }else{
+                                flag = true;
                             }
+                        }
+                        if(flag){
+                            toPaymentpage();
                         }
                     }
                 }

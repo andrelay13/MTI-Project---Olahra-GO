@@ -1,17 +1,19 @@
 package com.example.mtiproject_olahra_go.fragment;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.mtiproject_olahra_go.BookingAdapter;
 import com.example.mtiproject_olahra_go.BookingDB;
+import com.example.mtiproject_olahra_go.LoginActivity;
 import com.example.mtiproject_olahra_go.R;
 
 public class BookingFragment extends Fragment {
@@ -42,9 +44,10 @@ public class BookingFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_booking, container, false);
 
         rvBooking = view.findViewById(R.id.rvBooking);
-
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+        int id = sp.getInt(LoginActivity.SEND_LOGIN, 0);
         BookingAdapter adapter = new BookingAdapter();
-        adapter.setBookings(bookingDB.getBookings());
+        adapter.setBookings(bookingDB.getUserBookings(id));
 
         rvBooking.setAdapter(adapter);
 
