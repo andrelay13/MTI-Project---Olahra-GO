@@ -19,12 +19,14 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tvNamaVenue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:text="Lapangan" />
 
                 <TextView
+                    android:id="@+id/tvAlamatVenue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
@@ -37,31 +39,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_toLeftOf="@id/tvStatus"
-                android:layout_marginRight="60dp">
+                android:layout_alignParentEnd="true">
 
                 <TextView
+                    android:id="@+id/tvStartBooking"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:text="Jam Mulai -" />
 
                 <TextView
+                    android:id="@+id/tvEndBooking"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:text="Jam Selesai" />
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/tvStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="Status"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"/>
 
         </RelativeLayout>
 

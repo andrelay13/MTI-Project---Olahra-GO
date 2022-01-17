@@ -8,6 +8,7 @@ public class Booking implements Serializable {
     private int venueId;
     private String date;
     private int selectedCourse;
+
     public Booking(int bookId, int userId, int venueId, String date, int selectedCourse) {
         this.bookId = bookId;
         this.userId = userId;
