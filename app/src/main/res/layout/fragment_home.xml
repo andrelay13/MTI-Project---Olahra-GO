@@ -8,15 +8,27 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        >
 
+        <TextView
+            android:id="@+id/tvTitle"
+            android:text="Home Page"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            />
         <TextView
             android:id="@+id/tvGreet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:text="WELCOME" />
+            android:layout_marginTop="16dp"
+            android:text="WELCOME"
+            android:layout_below="@+id/tvTitle"
+            />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardSoccer"
@@ -85,12 +97,6 @@
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
-
-        <Button
-            android:id="@+id/buttonTrigger"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Test"/>
 
     </RelativeLayout>
 

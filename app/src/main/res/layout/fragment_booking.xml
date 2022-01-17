@@ -5,10 +5,30 @@
     android:layout_height="match_parent"
     tools:context=".fragment.BookingFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvBooking"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        >
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:text="My Bookings"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBooking"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tvTitle"
+            />
+
+    </RelativeLayout>
 
 
 </FrameLayout>

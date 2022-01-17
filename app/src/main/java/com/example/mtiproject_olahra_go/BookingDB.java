@@ -2,7 +2,6 @@ package com.example.mtiproject_olahra_go;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -53,6 +52,31 @@ public class BookingDB {
         Vector<Booking> vecBook = new Vector<>();
 
         String selection = "userId=?";
+        String[] selectionargs = {"" + id};
+
+        Cursor cursor = db.query(DBHelper.TABLE_BOOKINGS, null, selection, selectionargs, null, null, null);
+
+        while(cursor.moveToNext()){
+            int bookingId = cursor.getInt(0);
+            int userId = cursor.getInt(1);
+            int venueId = cursor.getInt(2);
+            String date = cursor.getString(3);
+            int court = cursor.getInt(4);
+
+            Booking booking = new Booking(bookingId, userId, venueId, date, court);
+            vecBook.add(booking);
+        }
+        cursor.close();
+        db.close();
+        dbHelper.close();
+        return vecBook;
+    }
+
+    public Vector<Booking> getVenueBookings(int id){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Vector<Booking> vecBook = new Vector<>();
+
+        String selection = "venueId=?";
         String[] selectionargs = {"" + id};
 
         Cursor cursor = db.query(DBHelper.TABLE_BOOKINGS, null, selection, selectionargs, null, null, null);

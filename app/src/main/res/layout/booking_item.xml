@@ -6,11 +6,13 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:padding="10dp"
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
 
             <LinearLayout
                 android:id="@+id/layout1"
@@ -23,7 +25,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
-                    android:text="Lapangan" />
+                    android:text="Nama Venue" />
 
                 <TextView
                     android:id="@+id/tvAlamatVenue"
@@ -32,30 +34,23 @@
                     android:textSize="20sp"
                     android:text="Alamat" />
 
+                <TextView
+                    android:id="@+id/tvSchedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jadwal"
+                    />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/layout2"
+
+            <TextView
+                android:id="@+id/tvLapangan"
+                android:text="Lapangan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_alignParentEnd="true">
+                android:layout_alignParentEnd="true" />
 
-                <TextView
-                    android:id="@+id/tvStartBooking"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="Jam Mulai -" />
-
-                <TextView
-                    android:id="@+id/tvEndBooking"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="Jam Selesai" />
-
-            </LinearLayout>
 
         </RelativeLayout>
 

@@ -34,9 +34,8 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.MyViewHo
 
         holder.tvNamaVenue.setText(venue.getVenueName());
         holder.tvAlamatVenue.setText(venue.getVenueAddress());
-        holder.tvStartBooking.setText(BookingActivity.start);
-        holder.tvStartBooking.setText(BookingActivity.stop);
-        holder.tvStatusBooking.setText("Ongoing");
+        holder.tvSchedule.setText("" + bookings.get(position).getDate());
+        holder.tvLapangan.setText("Lapangan-" + bookings.get(position).getSelectedCourse());
 
     }
 
@@ -47,17 +46,15 @@ public class BookingAdapter extends RecyclerView.Adapter<BookingAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvNamaVenue, tvAlamatVenue, tvStartBooking, tvEndBooking, tvStatusBooking;
+        TextView tvNamaVenue, tvAlamatVenue, tvSchedule, tvLapangan;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvNamaVenue = itemView.findViewById(R.id.tvNamaVenue);
             tvAlamatVenue = itemView.findViewById(R.id.tvAlamatVenue);
-            tvStartBooking = itemView.findViewById(R.id.tvStartBooking);
-            tvEndBooking = itemView.findViewById(R.id.tvEndBooking);
-            tvStatusBooking = itemView.findViewById(R.id.tvStatusBooking);
-
+            tvSchedule = itemView.findViewById(R.id.tvSchedule);
+            tvLapangan = itemView.findViewById(R.id.tvLapangan);
         }
     }
 }

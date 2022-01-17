@@ -44,6 +44,7 @@ public class BookingActivity extends AppCompatActivity {
         txtStop = findViewById(R.id.txtStop);
         btnCheck = findViewById(R.id.btnCheck);
         tvError = findViewById(R.id.tvError);
+        rvBooking = findViewById(R.id.rvBooking);
         start = 0;
         stop = 0;
         court = 0;
@@ -58,7 +59,7 @@ public class BookingActivity extends AppCompatActivity {
         int id = sp.getInt(LoginActivity.SEND_LOGIN, 0);
 
         BookingDB bookingDB = new BookingDB(this);
-        bookings = bookingDB.getUserBookings(id);
+        bookings = bookingDB.getVenueBookings(venueId);
 
         BookingAdapter adapter = new BookingAdapter();
         adapter.setBookings(bookings);
@@ -114,6 +115,8 @@ public class BookingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 tvError.setText("");
+                txtStop.setText("");
+                stop = 0;
                 Dialog d = new Dialog(BookingActivity.this);
                 d.setTitle("Pilih waktu mulai");
                 d.setContentView(R.layout.number_picker_dialog);
@@ -210,7 +213,7 @@ public class BookingActivity extends AppCompatActivity {
                     strDate = "" + date + "-" + month + "-" + year;
                     dateTime = strDate + ", " + strStart + "-" + strStop;
                     BookingDB db = new BookingDB(getApplicationContext());
-                    Vector<Booking> vecBooking = db.getBookings();
+                    Vector<Booking> vecBooking = db.getVenueBookings(venueId);
                     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     userId = sp.getInt(LoginActivity.SEND_LOGIN, 0);
 
@@ -220,9 +223,9 @@ public class BookingActivity extends AppCompatActivity {
                         for (Booking booking : vecBooking) {
                             if ((booking.getDate().equals(dateTime) || booking.getDate().contains(strStart) || booking.getDate().contains(strStop)) && booking.getSelectedCourse() == court && booking.getUserId() == userId && booking.getVenueId() == venueId) {
                                 tvError.setText("Sudah dibooking");
+                                break;
                             } else {
                                 toPaymentpage();
-                                break;
                             }
                         }
                     }
