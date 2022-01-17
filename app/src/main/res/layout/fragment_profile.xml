@@ -7,8 +7,18 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        >
 
+        <TextView
+            android:id="@+id/tvTitle"
+            android:text="Profile Page"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            />
         <LinearLayout
             android:id="@+id/layout1"
             android:layout_width="wrap_content"
@@ -16,6 +26,7 @@
             android:orientation="vertical"
             android:layout_marginTop="50dp"
             android:layout_marginLeft="50dp">
+
 
             <TextView
                 android:id="@+id/tvNamaUser"
