@@ -147,42 +147,39 @@ public class RegisterActivity extends AppCompatActivity {
     {
         String PhoneNumber = txtPhone.getText().toString();
         int PhoneNumberlength = txtPhone.getText().toString().length();
-        boolean phonenum = false, phonedigit =false;
+        boolean phonenum = true;
         char[] PhoneNumberArray = new char[PhoneNumberlength];
         for(int i=0 ; i<PhoneNumberlength ; i++){
             PhoneNumberArray[i] = PhoneNumber.charAt(i);
         }
 
         if(PhoneNumberlength >=10 && PhoneNumberlength <=12){
-            phonedigit = true;
             for (char cekphone:PhoneNumberArray) {
-                if(phonenum) {
-                    break;
+                if(!phonenum) {
+                    txtPhone.setError("Phone Number must contain only numbers");
+                    return false;
                 }
                 else{
                     if (cekphone >= '0' && cekphone <= '9') {
                         phonenum = true;
+                    }else{
+                        phonenum = false;
                     }
                 }
             }
-        }
-        if(phonenum){
-            return true;
-        }
-        else if(PhoneNumber.isEmpty()){
-            txtPhone.setError("Phone Number cannot be emtpy");
-            return false;
-        }
-        else if(!phonenum){
-            txtPhone.setError("Phone Number must contain only numbers");
-            return false;
-        }
-        else if(PhoneNumberlength<10 && PhoneNumberlength>12){
+
+            if(phonenum){
+                return true;
+            }
+            else if(PhoneNumber.isEmpty()){
+                txtPhone.setError("Phone Number cannot be emtpy");
+                return false;
+            }
+
+        }else{
             txtPhone.setError("Phone Number must be between 10 to 12 digits");
             return false;
         }
-        else {
-            return false;
-        }
+        return false;
     }
 }
