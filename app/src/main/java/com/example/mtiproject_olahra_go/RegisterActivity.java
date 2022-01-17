@@ -1,7 +1,5 @@
 package com.example.mtiproject_olahra_go;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -33,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(checkusername() && checkPhone() && checkPhone() && checkconfirmationpass()){
+                if(checkusername() && checkPhone() && checkPhone() && checkPassword() && checkconfirmationpass() && checkEmail()){
                     User user  = new User();
                     user.setUserName(txtUsername.getText().toString());
                     user.setUserPhone(txtPhone.getText().toString());
@@ -71,6 +71,15 @@ public class RegisterActivity extends AppCompatActivity {
             txtUsername.setError("Username must be between 6 and 12 characters");
             return false;
         }
+    }
+
+    private Boolean checkEmail(){
+        String email = txtEmail.getText().toString();
+        if(email.isEmpty()){
+            txtEmail.setError("Email cannot be empty");
+            return false;
+        }
+        return true;
     }
 
     private Boolean checkpassword(){
@@ -138,42 +147,49 @@ public class RegisterActivity extends AppCompatActivity {
     {
         String PhoneNumber = txtPhone.getText().toString();
         int PhoneNumberlength = txtPhone.getText().toString().length();
-        boolean phonenum = false, phonedigit =false;
+        boolean phonenum = true;
         char[] PhoneNumberArray = new char[PhoneNumberlength];
         for(int i=0 ; i<PhoneNumberlength ; i++){
             PhoneNumberArray[i] = PhoneNumber.charAt(i);
         }
 
         if(PhoneNumberlength >=10 && PhoneNumberlength <=12){
-            phonedigit = true;
             for (char cekphone:PhoneNumberArray) {
-                if(phonenum) {
-                    break;
+                if(!phonenum) {
+                    txtPhone.setError("Phone Number must contain only numbers");
+                    return false;
                 }
                 else{
                     if (cekphone >= '0' && cekphone <= '9') {
                         phonenum = true;
+                    }else{
+                        phonenum = false;
                     }
                 }
             }
-        }
-        if(phonenum){
-            return true;
-        }
-        else if(PhoneNumber.isEmpty()){
-            txtPhone.setError("Phone Number cannot be emtpy");
-            return false;
-        }
-        else if(!phonenum){
-            txtPhone.setError("Phone Number must contain only numbers");
-            return false;
-        }
-        else if(PhoneNumberlength<10 && PhoneNumberlength>12){
+
+            if(phonenum){
+                return true;
+            }
+            else if(PhoneNumber.isEmpty()){
+                txtPhone.setError("Phone Number cannot be emtpy");
+                return false;
+            }
+
+        }else{
             txtPhone.setError("Phone Number must be between 10 to 12 digits");
             return false;
         }
-        else {
+        return false;
+    }
+
+    private boolean checkPassword(){
+        String password = txtPassword.getText().toString();
+        if(password.isEmpty()){
+            txtPassword.setError("Password cannot be empty");
             return false;
         }
+
+        return true;
     }
 }

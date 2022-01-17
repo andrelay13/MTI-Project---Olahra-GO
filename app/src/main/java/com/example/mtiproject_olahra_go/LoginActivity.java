@@ -1,7 +1,5 @@
 package com.example.mtiproject_olahra_go;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Vector;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -35,7 +37,11 @@ public class LoginActivity extends AppCompatActivity {
         userDb = new UserDB(this);
 
         //INSERT DATA MANUALLY
-//        insertData();
+        JadwalDB jadwalDB = new JadwalDB(this);
+        Vector<Jadwal> vector = jadwalDB.getJadwal();
+        if(vector.isEmpty()){
+            insertData();
+        }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,8 +60,8 @@ public class LoginActivity extends AppCompatActivity {
 
                     }else{
                         Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_LONG).show();
-                        txtUsername.setError("Username is wrong!");
-                        txtPassword.setError("Password does not match!");
+//                        txtUsername.setError("Username is wrong!");
+                        txtPassword.setError("Wrong Credentials");
                     }
                 }
 
@@ -74,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public Boolean checkUsername(){
         if(txtUsername.getText().toString().isEmpty()) {
-            txtUsername.setError("Usenrame cannot be empty");
+            txtUsername.setError("Username cannot be empty");
             return false;
         }
 
